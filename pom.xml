@@ -6,7 +6,7 @@
 
   <groupId>groupId</groupId>
   <artifactId>artifactId</artifactId>
-  <version>version' 1.0-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
 
   <name>artifactId</name>
   <!-- FIXME change it to the project's website -->
@@ -16,16 +16,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    
+    <!-- SonarCloud settings -->
+    <sonar.projectKey>circle</sonar.projectKey>
+    <sonar.organization>not-nice</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.login>e7e6fae42d502c6bfa83b2cc046dfe9e85b77a16</sonar.login>
   </properties>
-
-<properties>
-  <!-- SonarCloud settings -->
-  <sonar.projectKey>circle</sonar.projectKey>
-  <sonar.organization>not-nice</sonar.organization>
-  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  <sonar.login>e7e6fae42d502c6bfa83b2cc046dfe9e85b77a16</sonar.login>
-</properties>
-
 
   <dependencies>
     <dependency>
@@ -82,7 +79,7 @@
           <groupId>org.sonarsource.scanner.maven</groupId>
           <artifactId>sonar-maven-plugin</artifactId>
           <version>3.9.0.2155</version>
-      </plugin>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
