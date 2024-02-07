@@ -18,6 +18,15 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
+<properties>
+  <!-- SonarCloud settings -->
+  <sonar.projectKey>circle</sonar.projectKey>
+  <sonar.organization>not-nice</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <sonar.login>e7e6fae42d502c6bfa83b2cc046dfe9e85b77a16</sonar.login>
+</properties>
+
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -69,6 +78,11 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.9.0.2155</version>
+      </plugin>
       </plugins>
     </pluginManagement>
   </build>

@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI/CD and SonarCloud Integration
 
 on:
   push:
@@ -34,19 +34,8 @@ jobs:
             cd /path/to/project
             git pull origin master
             # Additional deployment steps (e.g., restart server)
-name: CI/CD
 
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      ...
+      # SonarCloud Scan Job
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v1
         env:
