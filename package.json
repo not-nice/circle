@@ -1,23 +1,23 @@
 {
-    "name": "circle",
+    "name": "scientific-calculator",
     "version": "1.0.0",
-    "description": " a web app that calculate size of the circle given its radius",
-    "main": "index.js",
+    "description": "A simple scientific calculator web app",
+    "main": "index.html",
     "scripts": {
         "test": "test",
-        "start": "node calculateCircleSize.js"
+        "start": "node calculate.js"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/not-nice/circle.git"
     },
     "keywords": [
-        "circle",
-        "radius",
+        "calculate",
+        "sceintific",
         "javascript"
     ],
     "author": "wailgafar",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/not-nice/circle/issues"
     },
