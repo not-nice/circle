@@ -28,123 +28,47 @@ ext {
     sonarLogin = 'e7e6fae42d502c6bfa83b2cc046dfe9e85b77a16'
 }
 
-// Maven Clean Plugin
-configurations {
-    cleanPlugin
-}
-dependencies {
-    cleanPlugin 'org.apache.maven.plugins:maven-clean-plugin:3.1.0'
-}
-task clean(type: JavaExec) {
-    classpath configurations.cleanPlugin
-    main = 'org.apache.maven.plugins.clean.CleanMojo'
-    args 'clean'
-}
-
 // Maven Resources Plugin
-configurations {
-    resourcesPlugin
-}
-dependencies {
-    resourcesPlugin 'org.apache.maven.plugins:maven-resources-plugin:3.0.2'
-}
-task resources(type: JavaExec) {
-    classpath configurations.resourcesPlugin
-    main = 'org.apache.maven.plugins.resources.ResourcesMojo'
+task resources(type: Exec) {
+    commandLine 'mvn', 'resources'
 }
 
 // Maven Compiler Plugin
-configurations {
-    compilerPlugin
-}
-dependencies {
-    compilerPlugin 'org.apache.maven.plugins:maven-compiler-plugin:3.8.0'
-}
-task compile(type: JavaExec) {
-    classpath configurations.compilerPlugin
-    main = 'org.apache.maven.plugins.compiler.CompilerMojo'
+task compile(type: Exec) {
+    commandLine 'mvn', 'compile'
 }
 
 // Maven Surefire Plugin
-configurations {
-    surefirePlugin
-}
-dependencies {
-    surefirePlugin 'org.apache.maven.plugins:maven-surefire-plugin:2.22.1'
-}
-task test(type: JavaExec) {
-    classpath configurations.surefirePlugin
-    main = 'org.apache.maven.plugins.surefire.SurefireMojo'
+task testExec(type: Exec) {
+    commandLine 'mvn', 'test'
 }
 
 // Maven Jar Plugin
-configurations {
-    jarPlugin
-}
-dependencies {
-    jarPlugin 'org.apache.maven.plugins:maven-jar-plugin:3.0.2'
-}
-task jar(type: JavaExec) {
-    classpath configurations.jarPlugin
-    main = 'org.apache.maven.plugins.jar.JarMojo'
+task createJar(type: Exec) {
+    commandLine 'mvn', 'package'
 }
 
 // Maven Install Plugin
-configurations {
-    installPlugin
-}
-dependencies {
-    installPlugin 'org.apache.maven.plugins:maven-install-plugin:2.5.2'
-}
-task install(type: JavaExec) {
-    classpath configurations.installPlugin
-    main = 'org.apache.maven.plugins.install.InstallMojo'
+task install(type: Exec) {
+    commandLine 'mvn', 'install'
 }
 
 // Maven Deploy Plugin
-configurations {
-    deployPlugin
-}
-dependencies {
-    deployPlugin 'org.apache.maven.plugins:maven-deploy-plugin:2.8.2'
-}
-task deploy(type: JavaExec) {
-    classpath configurations.deployPlugin
-    main = 'org.apache.maven.plugins.deploy.DeployMojo'
+task deploy(type: Exec) {
+    commandLine 'mvn', 'deploy'
 }
 
 // Maven Site Plugin
-configurations {
-    sitePlugin
-}
-dependencies {
-    sitePlugin 'org.apache.maven.plugins:maven-site-plugin:3.7.1'
-}
-task site(type: JavaExec) {
-    classpath configurations.sitePlugin
-    main = 'org.apache.maven.plugins.site.SiteMojo'
+task site(type: Exec) {
+    commandLine 'mvn', 'site'
 }
 
 // Maven Project Info Reports Plugin
-configurations {
-    projectInfoReportsPlugin
-}
-dependencies {
-    projectInfoReportsPlugin 'org.apache.maven.plugins:maven-project-info-reports-plugin:3.0.0'
-}
-task projectInfoReports(type: JavaExec) {
-    classpath configurations.projectInfoReportsPlugin
-    main = 'org.apache.maven.plugins.projectinfo.ProjectInfoReportsMojo'
+task projectInfoReports(type: Exec) {
+    commandLine 'mvn', 'project-info-reports'
 }
 
 // Sonar Maven Plugin
-configurations {
-    sonarPlugin
-}
-dependencies {
-    sonarPlugin 'org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155'
-}
-task sonar(type: JavaExec) {
-    classpath configurations.sonarPlugin
-    main = 'org.sonarsource.scanner.maven.SonarQubeMojo'
+task sonar(type: Exec) {
+    commandLine 'mvn', 'sonar:sonar'
 }
