@@ -1,20 +1,22 @@
-// calculateCircleSize.js
-
 function calculateArea(radius) {
     return Math.PI * Math.pow(radius, 2);
 }
 
-function handleSubmit(event) {
-    event.preventDefault();
-
-    const radiusInput = document.getElementById('radius');
-    const areaDisplay = document.getElementById('area');
-
-    const radius = parseFloat(radiusInput.value);
+function calculateCircleArea(radius) {
     const area = calculateArea(radius);
-
-    areaDisplay.textContent = `The area of the circle is: ${area.toFixed(2)}`;
+    return `The area of the circle with radius ${radius} is: ${area.toFixed(2)}`;
 }
 
-const form = document.getElementById('circleForm');
-form.addEventListener('submit', handleSubmit);
+// Check if command-line arguments are provided
+if (process.argv.length <= 2) {
+    console.log('Usage: node calculateCircleSize.js <radius>');
+    process.exit(1);
+}
+
+const radius = parseFloat(process.argv[2]);
+if (isNaN(radius)) {
+    console.log('Error: Please provide a valid number for the radius.');
+    process.exit(1);
+}
+
+console.log(calculateCircleArea(radius));
