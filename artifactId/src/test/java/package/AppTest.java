@@ -1,20 +1,17 @@
 package package;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
+public class AppTest {
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void testCalculateCircleArea() {
+        App app = new App();
+        double radius = 5.0;
+        double expectedArea = Math.PI * Math.pow(radius, 2);
+        double actualArea = app.calculateCircleArea(radius);
+        assertEquals(expectedArea, actualArea, 0.001, "Area calculation is incorrect");
     }
 }
