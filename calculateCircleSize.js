@@ -20,3 +20,4 @@ if (isNaN(radius)) {
 }
 
 console.log(calculateCircleArea(radius));
+console.log(process.env.PORT);
