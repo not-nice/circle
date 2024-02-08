@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "test",
-        "start": "node calculateCircleSize.js"
+        "start": "node app.js"
     },
     "repository": {
         "type": "git",
