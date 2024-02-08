@@ -4,53 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circle Area Calculator</title>
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Circle Area Calculator</h1>
-    <form id="circleForm">
-        <label for="radius">Enter the radius of the circle:</label>
-        <input type="number" id="radius" name="radius" required>
-        <button type="submit">Calculate Area</button>
-    </form>
-    <p id="area"></p>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to calculate the area of a circle given its radius
-            function calculateArea(radius) {
-                return Math.PI * Math.pow(radius, 2);
-            }
-
-            // Function to calculate the area of a circle and update the HTML with the result
-            function calculateCircleArea(event) {
-                // Prevent the default form submission behavior
-                event.preventDefault();
-
-                // Get the radius input value from the form
-                const radiusInput = document.getElementById('radius');
-                const radius = parseFloat(radiusInput.value);
-
-                // Validate if the provided radius is a valid number
-                if (isNaN(radius)) {
-                    alert('Error: Please provide a valid number for the radius.');
-                    return;
-                }
-
-                // Calculate the area of the circle
-                const area = calculateArea(radius);
-
-                // Update the HTML with the calculated area
-                const areaOutput = document.getElementById('area');
-                areaOutput.textContent = `The area of the circle with radius ${radius} is: ${area.toFixed(2)}`;
-            }
-
-            // Get the form element and add an event listener for form submission
-            const circleForm = document.getElementById('circleForm');
-            circleForm.addEventListener('submit', calculateCircleArea);
-        });
-    </script>
+    <div class="calculator">
+        <input type="text" id="display" readonly aria-label="Calculator Display">
+        <div class="buttons">
+            <button id="clear" class="utility-button" aria-label="Clear">C</button>
+            <button class="utility-button" onclick="handleUtility('π')" aria-label="Pi">π</button>
+            <button class="utility-button" onclick="handleUtility('e')" aria-label="Euler's Number">e</button>
+            <button class="operator-button" onclick="appendToDisplay('^')" aria-label="Exponentiation">^</button>
+            <button class="operator-button" onclick="appendToDisplay('/')" aria-label="Division">/</button>
+            <button class="number-button" onclick="appendToDisplay('7')" aria-label="Number 7">7</button>
+            <button class="number-button" onclick="appendToDisplay('8')" aria-label="Number 8">8</button>
+            <button class="number-button" onclick="appendToDisplay('9')" aria-label="Number 9">9</button>
+            <button class="operator-button" onclick="appendToDisplay('*')" aria-label="Multiplication">*</button>
+            <button class="number-button" onclick="appendToDisplay('4')" aria-label="Number 4">4</button>
+            <button class="number-button" onclick="appendToDisplay('5')" aria-label="Number 5">5</button>
+            <button class="number-button" onclick="appendToDisplay('6')" aria-label="Number 6">6</button>
+            <button class="operator-button" onclick="appendToDisplay('-')" aria-label="Subtraction">-</button>
+            <button class="number-button" onclick="appendToDisplay('1')" aria-label="Number 1">1</button>
+            <button class="number-button" onclick="appendToDisplay('2')" aria-label="Number 2">2</button>
+            <button class="number-button" onclick="appendToDisplay('3')" aria-label="Number 3">3</button>
+            <button class="operator-button" onclick="appendToDisplay('+')" aria-label="Addition">+</button>
+            <button class="number-button" onclick="appendToDisplay('0')" aria-label="Number 0">0</button>
+            <button class="number-button" onclick="appendToDisplay('.')" aria-label="Decimal point">.</button>
+            <button class="operator-button" onclick="appendToDisplay('(')" aria-label="Left Parenthesis">(</button>
+            <button class="operator-button" onclick="appendToDisplay(')')" aria-label="Right Parenthesis">)</button>
+            <button class="utility-button" onclick="handleBackspace()" aria-label="Backspace">←</button>
+            <button class="operator-button" onclick="handleUtility('√')" aria-label="Square root">√</button>
+            <button class="operator-button" onclick="handleUtility('log')" aria-label="Logarithm base 10">log</button>
+            <button class="operator-button" onclick="handleUtility('ln')" aria-label="Natural logarithm">ln</button>
+            <button class="trig-button" onclick="handleUtility('sin')" aria-label="Sine function">sin</button>
+            <button class="trig-button" onclick="handleUtility('cos')" aria-label="Cosine function">cos</button>
+            <button class="trig-button" onclick="handleUtility('tan')" aria-label="Tangent function">tan</button>
+            <button id="equals" class="operator-button" aria-label="Equals">=</button>
+            <button id="clearEntry" class="utility-button" onclick="clearEntry()" aria-label="Clear Entry">CE</button>
+        </div>
+    </div>
+    <script src="App.js"></script>
 </body>
 
 </html>

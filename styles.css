@@ -1,58 +1,57 @@
-body {
-    font-family: Arial, sans-serif;
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    margin: auto;
+    background-color: #5591e5;
+    border: 1px solid #b1c6f3;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+#display {
+    width: calc(100% - 20px);
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 18px;
+    text-align: right;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    height: 40px;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-}
-
-.container {
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    font-size: 16px;
     border: none;
-    border-radius: 4px;
+    background-color: #b4bacd;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #ffffff;
 }
 
-#results {
-    font-size: 18px;
+button:active {
+    background-color: #d5d5d5;
+}
+
+button:focus {
+    outline: none;
 }
