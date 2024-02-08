@@ -2,55 +2,55 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
 }
 
 .container {
-    max-inline-size: 600px;
+    max-inline-size: 400px;
     margin: 0 auto;
     padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
 h1 {
     text-align: center;
-    color: #333;
 }
 
-form {
-    margin-block-end: 20px;
+.calculator-form {
+    display: flex;
+    flex-direction: column;
 }
 
-label {
-    display: block;
+.input-group {
     margin-block-end: 10px;
 }
 
-input[type="number"] {
+.input-group label {
+    font-weight: bold;
+}
+
+.input-group input[type="number"] {
+    padding: 5px;
     inline-size: 100%;
-    padding: 10px;
-    margin-block-end: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
-button {
+.input-group button {
+    padding: 8px 15px;
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
-button:hover {
+.input-group button:hover {
     background-color: #0056b3;
 }
 
-p#area {
-    font-size: 18px;
+.result {
+    margin-block-start: 10px;
     font-weight: bold;
-    margin-block-start: 20px;
-    padding: 10px;
-    background-color: #e9e9e9;
-    border-radius: 5px;
 }
