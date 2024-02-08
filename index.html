@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Scientific Calculator</h1>
+    <form id="calculatorForm">
+        <label for="expression">Enter an expression:</label>
+        <input type="text" id="expression" name="expression" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+<<<<<<< HEAD
+        function calculate() {
+            const expressionInput = document.getElementById('expression');
+            const expression = expressionInput.value;
+
+            try {
+                const result = eval(expression);
+                document.getElementById('result').textContent = `Result: ${result}`;
+            } catch (error) {
+                document.getElementById('result').textContent = 'Error: Invalid expression';
+            }
+        }
+
+        const calculatorForm = document.getElementById('calculatorForm');
+        calculatorForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            calculate();
+=======
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to calculate the area of a circle given its radius
+            function calculateArea(radius) {
+                return Math.PI * Math.pow(radius, 2);
+            }
+
+            // Function to calculate the area of a circle and update the HTML with the result
+            function calculateCircleArea(event) {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+
+                // Get the radius input value from the form
+                const radiusInput = document.getElementById('radius');
+                const radius = parseFloat(radiusInput.value);
+
+                // Validate if the provided radius is a valid number
+                if (isNaN(radius)) {
+                    alert('Error: Please provide a valid number for the radius.');
+                    return;
+                }
+
+                // Calculate the area of the circle
+                const area = calculateArea(radius);
+
+                // Update the HTML with the calculated area
+                const areaOutput = document.getElementById('area');
+                areaOutput.textContent = `The area of the circle with radius ${radius} is: ${area.toFixed(2)}`;
+            }
+
+            // Get the form element and add an event listener for form submission
+            const circleForm = document.getElementById('circleForm');
+            circleForm.addEventListener('submit', calculateCircleArea);
+>>>>>>> parent of f0b549e (build)
+        });
+    </script>
+</body>
+
+</html>
