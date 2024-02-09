@@ -1,7 +1,7 @@
 {
     "name": "circle",
     "version": "1.0.0",
-    "description": " a web app that calculate size of the circle given its radius",
+    "description": "A web app that calculates ",
     "main": "index.js",
     "scripts": {
         "test": "test",
@@ -13,7 +13,7 @@
     },
     "keywords": [
         "circle",
-        "radius",
+        "calculator",
         "javascript"
     ],
     "author": "wailgafar",
@@ -21,5 +21,8 @@
     "bugs": {
         "url": "https://github.com/not-nice/circle/issues"
     },
-    "homepage": "https://github.com/not-nice/circle#readme"
+    "homepage": "https://github.com/not-nice/circle#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }
