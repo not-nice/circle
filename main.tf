@@ -27,7 +27,6 @@ resource "aws_vpc" "my_vpc" {
 resource "aws_subnet" "public_subnet" {
   vpc_id     = aws_vpc.my_vpc.id
   cidr_block = "10.0.1.0/24"  # CIDR block for the public subnet
-  map_public_ip_on_launch = true  # Enable automatic assignment of public IP addresses
 
   tags = {
     Name = "PublicSubnet"
@@ -44,27 +43,13 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-# Set up RDS instance
-resource "aws_db_instance" "my_database" {
-  engine         = "mysql"
-  instance_class = "db.t2.micro"
-  allocated_storage = 20
-  identifier     = "my-database56-instance"
-  username       = "admin"
-  password       = "admin"
-}
-
 # Resource Definitions
 resource "aws_instance" "Instance-1" {
   ami           = "ami-0c7217cdde317cfec"  # Change this to a valid AMI ID
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnet.id  # Use the ID of the public subnet
-  associate_public_ip_address = true  # Assign a public IPv4 address to the instance
-
-  tags = {
-    Name = "MyInstance"
-  }
 }
+
 
 # Define a security group for the EC2 instance
 resource "aws_security_group" "public_ec2_sg" {
