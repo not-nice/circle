@@ -25,8 +25,13 @@ resource "aws_vpc" "my_vpc" {
 
 # Create a public subnet in the VPC
 resource "aws_subnet" "public_subnet" {
-  vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.1.0/24"  # CIDR block for the public subnet
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.1.0/24"  # CIDR block for the public subnet
+  map_public_ip_on_launch = true     # Enable automatic assignment of public IP addresses
+
+  lifecycle {
+    ignore_changes = [map_public_ip_on_launch]
+  }
 
   tags = {
     Name = "PublicSubnet"
@@ -35,8 +40,8 @@ resource "aws_subnet" "public_subnet" {
 
 # Create a private subnet in the VPC
 resource "aws_subnet" "private_subnet" {
-  vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.2.0/24"  # CIDR block for the private subnet
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.2.0/24"  # CIDR block for the private subnet
 
   tags = {
     Name = "PrivateSubnet"
@@ -48,25 +53,41 @@ resource "aws_instance" "Instance-1" {
   ami           = "ami-0c7217cdde317cfec"  # Change this to a valid AMI ID
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnet.id  # Use the ID of the public subnet
-}
+  associate_public_ip_address = true           # Assign a public IPv4 address to the instance
 
+  key_name      = "vockey"  # Replace with the name of your key pair
+
+  tags = {
+    Name = "MyInstance"
+  }
+}
 
 # Define a security group for the EC2 instance
 resource "aws_security_group" "public_ec2_sg" {
   vpc_id = aws_vpc.my_vpc.id  # Use the VPC created above
 
+  # Allow inbound HTTP traffic (port 80) from anywhere
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allowing inbound traffic from anywhere on port 80
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Allow inbound SSH traffic (port 22) from your IP address (replace YOUR_IP)
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["100.26.165.195/32"]  # Replace YOUR_IP with your public IP address
+  }
+
+  # Allow outbound traffic to anywhere
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]  # Allowing outbound traffic to anywhere
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
