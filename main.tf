@@ -79,7 +79,7 @@ resource "aws_security_group" "public_ec2_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["100.26.165.195/32"]  # Replace YOUR_IP with your public IP address
+    cidr_blocks = ["100.25.151.34/32"]  # Replace YOUR_IP with your public IP address
   }
 
   # Allow outbound traffic to anywhere
